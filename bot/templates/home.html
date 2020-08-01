@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    {% for ans in answers %}
+
+    <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <a href="{% url 'ans' ans.bot_id %}">
+                <h5 class="card-title">{{ans.question}}</h5>
+            </a>
+            <p class="card-text">{{ans.description}}</p>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'edit' ans.bot_id %}" class="btn btn-primary">Edit</a>
+            {% else %}
+            <h1></h1>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+
+
+
+    {% endfor %}
+</div>
+{% endblock %}

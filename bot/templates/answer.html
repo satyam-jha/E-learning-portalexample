@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>{{answer.question}}</h1>
+<p>{{answer.description}}</p>
+{% if answer.answer %}
+<video width="400" height="400" controls>
+    <source src="{{answer.answer.url}}" type="video/mp4">
+
+
+</video>
+
+{% else %}
+<h1></h1>
+{% endif %}
+
+{% if request.user.is_authenticated %}
+<a href="{% url 'edit' answer.bot_id %}" class="btn btn-primary">Edit</a>
+{% else %}
+<h2></h2>
+{% endif %}
+{% endblock %}
