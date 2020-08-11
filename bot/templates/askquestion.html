@@ -4,9 +4,17 @@
 
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <div>
-        {{form.as_p}}
-    </div>
+    <form>
+        <div class="form-group">
+            <label for="Question">Question</label>
+            <input class="form-control" type="text" name="question" placeholder="Askquestion">
+        </div>
+
+          <div class="form-group">
+            <label for="Question-Description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+    </form>
     <input type="submit" value="Ask">
 
 </form>

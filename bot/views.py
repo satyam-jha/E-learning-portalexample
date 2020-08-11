@@ -2,8 +2,14 @@ from django.shortcuts import render, redirect
 from .models import Grades, Subjects, Question
 from django.contrib.auth.decorators import login_required
 from .forms import QuestionForm
+from .serializer import Questiondata
+from rest_framework import viewsets
 # Create your views here.
 
+
+class Questionapi(viewsets.ModelViewSet):
+    queryset = Question.objects.all().order_by('question')
+    serializer_class = Questiondata
 
 def home(request):
     answers = Question.objects.all()
